@@ -4,11 +4,14 @@ window.addEventListener('keydown', (e) => {
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
-    key.classList.add('playing');
-    
-    key.addEventListener('transitionend', () => {
-        key.classList.remove('playing');
-    });
+    key.classList.add('playing');   
+});
 
-    
-})
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+    key.addEventListener('transitionend', (e) => {
+        if (e.propertyName == "transform"){
+            console.log('yup')
+        }
+    })
+});
